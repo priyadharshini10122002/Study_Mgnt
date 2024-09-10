@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Management</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        button, a.button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none; 
+            text-align: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover, a.button:hover {
+            background-color: #45a049;
+        }
+
+        a.button {
+            display: inline-block; 
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center;">Study Management !</h2>
+    <form method="POST" action="{% url 'Delete_Study' %}">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Study Name</th>
+                    <th>Phase</th>
+                    <th>Sponsor</th>
+                    <th>Description</th>
+                    <th>View</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            {% for study in studies %}
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" name="selected_studies" value="{{ study.id }}"></td>
+                    <td>{{study.Name}}</td>
+                    <td>{{study.Phase}}</td>
+                    <td>{{study.Sponser_Name}}</td>
+                    <td>{{study.Description}}</td>
+                    <td><a href="{% url 'view' study.id %}" class="button">View</a></td>
+                    <td><a href="{% url 'Edit_Study' study.id %}" class="button">Edit</a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+
+        <div class="button-container">
+            <a href="{% url 'Add_Study' %}" class="button">Add Study</a>
+            <button type="submit">Delete Study</button>
+        </div>
+    </form>
+</body>
+</html>

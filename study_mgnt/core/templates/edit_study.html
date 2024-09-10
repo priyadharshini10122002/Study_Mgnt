@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Study</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 40%;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+            width: 30%; 
+            text-align: right;
+        }
+
+        
+        input[type="text"],
+        select,
+        textarea {
+            width: 65%; 
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color:  #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem; 
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color:  #4CAF50;
+        }
+
+        .cancel-button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .cancel-button:hover {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Edit Study</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Study Name</label>
+                {{ form.Name }}
+            </div>
+            <div class="form-group">
+                <label for="phase">Study Phase</label>
+                {{ form.Phase }}
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                {{ form.Description }}
+            </div>
+            <div class="form-group">
+                <label for="sponsor">Sponsor Name</label>
+                {{ form.Sponser_Name }}
+            </div>
+
+            <div class="button-container">
+                <button type="submit" name="save">Save</button>
+                <a href="{% url 'index' %}" class="cancel-button">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

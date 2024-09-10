@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Detail</title>
+    <style>
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 50%;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr; 
+            row-gap: 20px;
+            column-gap: 10px;
+            justify-items: start;
+        }
+
+        .detail-grid div {
+            padding: 10px;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            text-align: right; 
+            color: #555;
+        }
+
+        .detail-value {
+            text-align: left; 
+          
+            padding: 10px;
+            border-radius: 5px;
+           
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 30px;
+            background-color:  #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Study Details</h1>
+        <div class="detail-grid">
+            <div class="detail-label">ID</div>
+            <div class="detail-value">{{ data.id }}</div>
+
+            <div class="detail-label">Study Name</div>
+            <div class="detail-value">{{ data.Name }}</div>
+
+            <div class="detail-label">Study Phase</div>
+            <div class="detail-value">{{ data.Phase }}</div>
+
+            <div class="detail-label">Study Description</div>
+            <div class="detail-value">{{ data.Description }}</div>
+
+            <div class="detail-label">Sponsor Name</div>
+            <div class="detail-value">{{ data.Sponser_Name }}</div>
+        </div>
+        <a href="{% url 'index' %}" class="back-button">Back to Home</a>
+    </div>
+
+</body>
+</html>
